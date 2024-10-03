@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoopCare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-section">
+        <h1>CoopCare</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#transaction">Transaction</a></li>
+            <li><a href="#voting">Voting</a></li>
+            <li><a href="#members">Members</a></li>
+            <button id="connect-wallet" class="cta-btn">Connect Wallet</button>
+            <p id="wallet-address"></p>
+        </ul>
+        
+    </nav>
+
+    <section id="transaction" class="transaction-section">
+        <h2>Send SOL</h2>
+        <form id="transaction-form">
+            <label for="recipient">Recipient Address:</label>
+            <input type="text" id="recipient" placeholder="Enter recipient address" required>
+            <label for="amount">Amount (SOL):</label>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+            <button type="submit" class="cta-btn">Send</button>
+        </form>
+    </section>
+
+    <section id="voting" class="voting-section">
+        <h2>Cooperative Voting</h2>
+
+        <!-- Create Proposal Form -->
+        <form id="create-proposal-form">
+            <h3>Create a Proposal</h3>
+            <label for="proposal">Proposal:</label>
+            <input type="text" id="proposal" placeholder="Enter proposal description" required>
+            <button type="submit" class="cta-btn">Create Proposal</button>
+        </form>
+
+        <!-- Vote Form -->
+        <form id="vote-form">
+            <h3>Cast Your Vote</h3>
+            <label for="proposal-id">Proposal ID:</label>
+            <input type="text" id="proposal-id" placeholder="Enter Proposal ID" required>
+            <label for="vote">Your Vote:</label>
+            <select id="vote">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <button type="submit" class="cta-btn">Vote</button>
+        </form>
+
+        <!-- Display Results -->
+        <div id="results" class="results-section">
+            <h3>Voting Results</h3>
+            <p id="result-display">No proposals yet.</p>
+        </div>
+    </section>
+
+    <section id="members" class="members-section">
+        <h2>Manage Members</h2>
+
+        <!-- Add Member Form -->
+        <form id="add-member-form">
+            <label for="member-name">Member Name:</label>
+            <input type="text" id="member-name" placeholder="Enter member name" required>
+            <label for="member-address">Member Wallet Address:</label>
+            <input type="text" id="member-address" placeholder="Enter wallet address" required>
+            <button type="submit" class="cta-btn">Add Member</button>
+        </form>
+
+        <!-- Member List -->
+        <div id="member-list">
+            <h3>Current Members</h3>
+            <ul id="members-display">
+                <li>No members added yet.</li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
