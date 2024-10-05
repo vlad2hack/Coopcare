@@ -4,24 +4,11 @@ let members = []; // To store members
 // Handle Wallet Connection
 document.getElementById('connect-wallet').addEventListener('click', async () => {
     if (window.solana && window.solana.isPhantom) {
-        try {
-            const response = await window.solana.connect();
-            const walletAddress = response.publicKey.toString();
-
-            // Replace button text with wallet address
-            const connectWalletButton = document.getElementById('connect-wallet');
-            connectWalletButton.innerText = `Wallet: ${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
-            connectWalletButton.disabled = true; // Disable the button to prevent reconnecting
-
-            // Optionally, display the full wallet address elsewhere
-            document.getElementById('wallet-address').innerText = `Connected: ${walletAddress}`;
-        } catch (error) {
-            alert('Failed to connect wallet!');
-        }
+        const response = await window.solana.connect();
+        // Replace the button text with the wallet address
+        document.getElementById('connect-wallet').innerText = `${response.publicKey.toString()}`;
     } else {
-        if (confirm('Phantom Wallet not found. Would you like to install it?')) {
-            window.open('https://phantom.app/', '_blank');
-        }
+        alert('Please install Phantom wallet!');
     }
 });
 
