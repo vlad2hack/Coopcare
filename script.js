@@ -5,8 +5,7 @@ let members = []; // To store members
 document.getElementById('connect-wallet').addEventListener('click', async () => {
     if (window.solana && window.solana.isPhantom) {
         const response = await window.solana.connect();
-        // Replace the button text with the wallet address
-        document.getElementById('connect-wallet').innerText = `${response.publicKey.toString()}`;
+        document.getElementById('wallet-address').innerText = `Connected: ${response.publicKey.toString()}`;
     } else {
         alert('Please install Phantom wallet!');
     }
