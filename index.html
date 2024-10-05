@@ -4,101 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoopCare</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header-section">
-            <div class="container">
-                <h1>CoopCare</h1>
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#proposals">Proposals</a></li>
-                        <li><a href="#members">Members</a></li>
-                    </ul>
-                </nav>
-                <!-- Wallet Button -->
-                <button id="connect-wallet" class="cta-btn">Connect Wallet</button>
+    <header class="header-section">
+        <div class="container">
+            <h1>CoopCare</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#transaction">Transaction</a></li>
+                    <li><a href="#voting">Voting</a></li>
+                    <li><a href="#members">Members</a></li>
+                </ul>
+            </nav>
+            <button id="connect-wallet" class="cta-btn">Connect Wallet</button>
+            <p id="wallet-address"></p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="hero" class="hero-section">
+            <h2>Empowering Cooperatives with Blockchain</h2>
+            <p>Secure, transparent, and efficient management for your cooperative society</p>
+        </section>
+
+        <section id="transaction" class="transaction-section">
+            <h2>Send SOL</h2>
+            <form id="transaction-form">
+                <label for="recipient">Recipient Address:</label>
+                <input type="text" id="recipient" placeholder="Enter recipient address" required>
+                <label for="amount">Amount (SOL):</label>
+                <input type="number" id="amount" placeholder="Enter amount" required>
+                <button type="submit" class="cta-btn">Send</button>
+            </form>
+        </section>
+
+        <section id="voting" class="voting-section">
+            <h2>Cooperative Voting</h2>
+            <div class="voting-container">
+                <div class="voting-column">
+                    <h3>Create a Proposal</h3>
+                    <form id="create-proposal-form">
+                        <label for="proposal">Proposal:</label>
+                        <input type="text" id="proposal" placeholder="Enter proposal description" required>
+                        <button type="submit" class="cta-btn">Create Proposal</button>
+                    </form>
+                </div>
+                <div class="voting-column">
+                    <h3>Cast Your Vote</h3>
+                    <form id="vote-form">
+                        <label for="proposal-id">Proposal ID:</label>
+                        <input type="text" id="proposal-id" placeholder="Enter Proposal ID" required>
+                        <label for="vote">Your Vote:</label>
+                        <select id="vote">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <button type="submit" class="cta-btn">Vote</button>
+                    </form>
+                </div>
             </div>
-        </header>
+            <div id="results" class="results-section">
+                <h3>Voting Results</h3>
+                <p id="result-display">No proposals yet.</p>
+            </div>
+        </section>
 
-        <!-- Main Section -->
-        <main>
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <h2>Decentralized Cooperative Society Management</h2>
-                <p>Manage proposals, members, and transactions transparently.</p>
-            </section>
+        <section id="members" class="members-section">
+            <h2>Manage Members</h2>
+            <div class="members-container">
+                <div class="members-column">
+                    <h3>Add Member</h3>
+                    <form id="add-member-form">
+                        <label for="member-name">Member Name:</label>
+                        <input type="text" id="member-name" placeholder="Enter member name" required>
+                        <label for="member-address">Member Wallet Address:</label>
+                        <input type="text" id="member-address" placeholder="Enter wallet address" required>
+                        <button type="submit" class="cta-btn">Add Member</button>
+                    </form>
+                </div>
+                <div class="members-column">
+                    <h3>Current Members</h3>
+                    <ul id="members-display">
+                        <li>No members added yet.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <!-- Proposals Section -->
-            <section id="proposals">
-                <h2>Create a Proposal</h2>
-                <form id="create-proposal-form">
-                    <label for="proposal">Proposal:</label>
-                    <input type="text" id="proposal" name="proposal" placeholder="Enter your proposal here" required>
-                    <button type="submit" class="cta-btn">Submit Proposal</button>
-                </form>
-            </section>
+    <footer class="footer-section">
+        <div class="container">
+            <p>&copy; 2024 CoopCare. All rights reserved.</p>
+        </div>
+    </footer>
 
-            <!-- Voting Section -->
-            <section id="voting">
-                <h2>Vote on Proposals</h2>
-                <form id="vote-form">
-                    <label for="proposal-id">Proposal ID:</label>
-                    <input type="number" id="proposal-id" name="proposal-id" placeholder="Enter Proposal ID" required>
-
-                    <label for="vote">Vote:</label>
-                    <select id="vote" name="vote" required>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                    <button type="submit" class="cta-btn">Submit Vote</button>
-                </form>
-
-                <!-- Display Voting Results -->
-                <div id="result-display"></div>
-            </section>
-
-            <!-- Members Section -->
-            <section id="members">
-                <h2>Add New Members</h2>
-                <form id="add-member-form">
-                    <label for="member-name">Member Name:</label>
-                    <input type="text" id="member-name" name="member-name" placeholder="Enter member name" required>
-
-                    <label for="member-address">Member Address:</label>
-                    <input type="text" id="member-address" name="member-address" placeholder="Enter wallet address" required>
-                    <button type="submit" class="cta-btn">Add Member</button>
-                </form>
-
-                <!-- Display Members List -->
-                <h2>Members List</h2>
-                <ul id="members-display"></ul>
-            </section>
-
-            <!-- Transaction Section -->
-            <section id="transactions">
-                <h2>Send Transaction</h2>
-                <form id="transaction-form">
-                    <label for="recipient">Recipient Address:</label>
-                    <input type="text" id="recipient" name="recipient" placeholder="Enter recipient's wallet address" required>
-
-                    <label for="amount">Amount (SOL):</label>
-                    <input type="number" id="amount" name="amount" placeholder="Enter amount in SOL" required>
-
-                    <button type="submit" class="cta-btn">Send Transaction</button>
-                </form>
-            </section>
-        </main>
-
-        <!-- Footer Section -->
-        <footer class="footer-section">
-            <p>&copy; 2024 CoopCare. All Rights Reserved.</p>
-        </footer>
-    </div>
-
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
