@@ -1,86 +1,24 @@
-let proposals = []; // To store proposals temporarily
-let members = []; // To store members
-
-// Handle Wallet Connection
-document.getElementById('connect-wallet').addEventListener('click', async () => {
-    if (window.solana && window.solana.isPhantom) {
-        const response = await window.solana.connect();
-        document.getElementById('wallet-address').innerText = `Connected: ${response.publicKey.toString()}`;
-    } else {
-        alert('Please install Phantom wallet!');
-    }
-});
-
-// Handle Transaction
-document.getElementById('transaction-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const recipient = document.getElementById('recipient').value;
-    const amount = parseFloat(document.getElementById('amount').value);
-
-    // Transaction logic here (using Solana Web3.js)
-    alert(`Sending ${amount} SOL to ${recipient}`);
-    // Note: Add actual Solana transaction logic later
-});
-
-// Handle Proposal Creation
-document.getElementById('create-proposal-form').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const proposalText = document.getElementById('proposal').value;
-
-    if (proposalText) {
-        const proposalId = proposals.length + 1;
-        proposals.push({ id: proposalId, text: proposalText, votes: { yes: 0, no: 0 } });
-        alert(`Proposal Created! ID: ${proposalId}`);
-        document.getElementById('proposal').value = ''; // Clear form input
-        updateResultsDisplay();
-    }
-});
-
-// Handle Voting
-document.getElementById('vote-form').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const proposalId = parseInt(document.getElementById('proposal-id').value);
-    const vote = document.getElementById('vote').value;
-
-    const proposal = proposals.find(p => p.id === proposalId);
-
-    if (proposal) {
-        proposal.votes[vote]++;
-        alert(`You voted ${vote.toUpperCase()} on Proposal ID: ${proposalId}`);
-        updateResultsDisplay();
-    } else {
-        alert("Proposal not found!");
-    }
-});
-
-// Update Results Display
-function updateResultsDisplay() {
-    const resultDisplay = document.getElementById('result-display');
-    resultDisplay.innerHTML = proposals.map(proposal => `
-        <div>
-            <strong>Proposal ID:</strong> ${proposal.id} - ${proposal.text}<br>
-            <strong>Yes Votes:</strong> ${proposal.votes.yes} | <strong>No Votes:</strong> ${proposal.votes.no}
-        </div>
-    `).join('');
+// Helper function to detect if an element is in viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
 
-// Handle Adding New Members
-document.getElementById('add-member-form').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const memberName = document.getElementById('member-name').value;
-    const memberAddress = document.getElementById('member-address').value;
-
-    if (memberName && memberAddress) {
-        members.push({ name: memberName, address: memberAddress });
-        alert(`Member ${memberName} added!`);
-        document.getElementById('member-name').value = ''; // Clear input
-        document.getElementById('member-address').value = ''; // Clear input
-        updateMembersDisplay();
-    }
-});
-
-// Update Members Display
-function updateMembersDisplay() {
-    const membersDisplay = document.getElementById('members-display');
-    membersDisplay.innerHTML = members.length ? members.map(member => `<li>${member.name} - ${member.address}</li>`).join('') : 'No members added yet.';
+// Trigger animations when the element is in the viewport
+function triggerAnimations() {
+    const elementsToAnimate = document.querySelectorAll('section, header, footer');
+    
+    elementsToAnimate.forEach((element) => {
+        if (isInViewport(element)) {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+        }
+    });
 }
+
+window.addEventListener('scroll', triggerAnimations);
