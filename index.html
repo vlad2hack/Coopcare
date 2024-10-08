@@ -3,100 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoopCare</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>CoopCare - Decentralized Cooperative Management</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header-section">
+    <!-- Header Section -->
+    <header>
         <div class="container">
             <h1>CoopCare</h1>
-            <nav class="navbar">
+            <nav>
                 <ul>
-                    <li><a href="#transaction">Transaction</a></li>
-                    <li><a href="#voting">Voting</a></li>
-                    <li><a href="#members">Members</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="signup/signup.html" class="btn">Sign Up</a></li>
+                    <li><a href="login/login.html" class="btn">login</a></li>
                 </ul>
             </nav>
-            <button id="connect-wallet" class="cta-btn">Connect Wallet</button>
-            <p id="wallet-address"></p>
         </div>
     </header>
 
-    <main class="container">
-        <section id="hero" class="hero-section">
-            <h2>Empowering Cooperatives with Blockchain</h2>
-            <p>Secure, transparent, and efficient management for your cooperative society</p>
-        </section>
-
-        <section id="transaction" class="transaction-section">
-            <h2>Send SOL</h2>
-            <form id="transaction-form">
-                <label for="recipient">Recipient Address:</label>
-                <input type="text" id="recipient" placeholder="Enter recipient address" required>
-                <label for="amount">Amount (SOL):</label>
-                <input type="number" id="amount" placeholder="Enter amount" required>
-                <button type="submit" class="cta-btn">Send</button>
-            </form>
-        </section>
-
-        <section id="voting" class="voting-section">
-            <h2>Cooperative Voting</h2>
-            <div class="voting-container">
-                <div class="voting-column">
-                    <h3>Create a Proposal</h3>
-                    <form id="create-proposal-form">
-                        <label for="proposal">Proposal:</label>
-                        <input type="text" id="proposal" placeholder="Enter proposal description" required>
-                        <button type="submit" class="cta-btn">Create Proposal</button>
-                    </form>
-                </div>
-                <div class="voting-column">
-                    <h3>Cast Your Vote</h3>
-                    <form id="vote-form">
-                        <label for="proposal-id">Proposal ID:</label>
-                        <input type="text" id="proposal-id" placeholder="Enter Proposal ID" required>
-                        <label for="vote">Your Vote:</label>
-                        <select id="vote">
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                        <button type="submit" class="cta-btn">Vote</button>
-                    </form>
-                </div>
-            </div>
-            <div id="results" class="results-section">
-                <h3>Voting Results</h3>
-                <p id="result-display">No proposals yet.</p>
-            </div>
-        </section>
-
-        <section id="members" class="members-section">
-            <h2>Manage Members</h2>
-            <div class="members-container">
-                <div class="members-column">
-                    <h3>Add Member</h3>
-                    <form id="add-member-form">
-                        <label for="member-name">Member Name:</label>
-                        <input type="text" id="member-name" placeholder="Enter member name" required>
-                        <label for="member-address">Member Wallet Address:</label>
-                        <input type="text" id="member-address" placeholder="Enter wallet address" required>
-                        <button type="submit" class="cta-btn">Add Member</button>
-                    </form>
-                </div>
-                <div class="members-column">
-                    <h3>Current Members</h3>
-                    <ul id="members-display">
-                        <li>No members added yet.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-section">
+    <!-- Hero Section -->
+    <section id="hero">
         <div class="container">
-            <p>&copy; 2024 CoopCare. All rights reserved.</p>
+            <h2>Manage your cooperative society with ease, transparency, and security.</h2>
+            <p>Join CoopCare to experience faster transactions and transparent voting systems, all built on the Solana blockchain.</p>
+            <a href="#signup" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h3>Our Features</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Fast Transactions</h4>
+                    <p>Handle cooperative finances with speed and accuracy using our decentralized system.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Transparent Voting</h4>
+                    <p>Ensure fair and transparent decision-making with blockchain-based voting mechanisms.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Data Security</h4>
+                    <p>Your cooperative's data is encrypted and stored securely on the Solana blockchain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <h3>About CoopCare</h3>
+            <p>CoopCare is a decentralized web application designed to solve issues in cooperative societies such as slow transactions, lack of transparency, and unorganized management. Built on the Solana blockchain, CoopCare aims to revolutionize how cooperative societies operate in Nigeria and beyond.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2024 CoopCare | All Rights Reserved</p>
+            <p>Contact us: <a href="mailto:support@coopcare.com">support@coopcare.com</a></p>
         </div>
     </footer>
 
