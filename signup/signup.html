@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoopCare - Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sign Up Form Section -->
+    <section id="signup-form">
+        <div class="container">
+            <h2>Create Your Account</h2>
+            <form id="signup" onsubmit="return validateForm()">
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" minlength="8" required>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+
+                <!-- Cooperative DAO Selection -->
+                <div class="form-group">
+                    <label for="coop-dao">Select Cooperative Society:</label>
+                    <select id="coop-dao" name="coop-dao" required>
+                        <option value="" disabled selected>Select your DAO</option>
+                        <option value="alpha-dao">Alpha DAO</option>
+                        <option value="beta-dao">Beta DAO</option>
+                        <option value="gamma-dao">Gamma DAO</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn">Sign Up</button>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
