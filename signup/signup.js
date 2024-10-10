@@ -23,7 +23,7 @@ function validateSignup(event) {
     // Simulate successful signup (replace with actual signup logic)
     console.log('Signup successful!');
     console.log('Redirecting to dashboard...'); // Debugging log for redirection
-    window.location.href = 'Dashboard/dashboard.html'; // Use root-relative path
+    window.location.href = '../Dashboard/dashboard.html'; // Use root-relative path
     return true; // Form is valid
 }
 
