@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoopCare - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>CoopCare Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="connect-wallet">Connect Wallet</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h2>Welcome, <span id="user-fullname">John Doe</span></h2>
+
+            <div class="user-profile">
+                <h3>User Profile</h3>
+                <p>Email: <span id="user-email">john.doe@example.com</span></p>
+                <button onclick="navigateToProfile()">Edit Profile</button>
+            </div>
+
+            <div class="account-balance">
+                <h3>Account Balance</h3>
+                <p>$<span id="account-balance">1000.00</span></p>
+                <button onclick="navigateToDeposit()">Deposit Funds</button>
+            </div>
+
+            <div class="loan-status">
+                <h3>Your Loans</h3>
+                <div id="loan-status-list">
+                    <!-- Loan Status Items Will Be Dynamically Generated Here -->
+                </div>
+                <button onclick="navigateToLoan()">View All Loans</button>
+            </div>
+
+            <div class="voting-history">
+                <h3>Your Voting History</h3>
+                <div id="voting-history-list">
+                    <!-- Voting History Items Will Be Dynamically Generated Here -->
+                </div>
+                <button onclick="navigateToVoting()">View All Votes</button>
+            </div>
+
+            <div class="notifications">
+                <h3>Notifications</h3>
+                <ul id="notification-list">
+                    <!-- Notifications Will Be Dynamically Generated Here -->
+                </ul>
+            </div>
+
+            <div class="dashboard-options">
+                <div class="option-card" id="vote-option">
+                    <h3>Vote</h3>
+                    <p>Participate in the cooperative decision-making process.</p>
+                    <button onclick="navigateToVote()">Vote Now</button>
+                </div>
+
+                <div class="option-card" id="loan-option">
+                    <h3>Take a Loan</h3>
+                    <p>Apply for a loan to support your needs.</p>
+                    <button onclick="navigateToLoan()">Apply Now</button>
+                </div>
+
+                <div class="option-card" id="validate-loan-option">
+                    <h3>Validate a Loan</h3>
+                    <p>Validate pending loan requests.</p>
+                    <button onclick="navigateToValidateLoan()">Validate Now</button>
+                </div>
+            </div>
+
+            <div class="transaction-history">
+                <h3>Transaction History</h3>
+                <ul id="transaction-list">
+                    <!-- Transaction History Items Will Be Dynamically Generated Here -->
+                </ul>
+                <button onclick="navigateToTransactions()">View All Transactions</button>
+            </div>
+
+            <div class="support-section">
+                <h3>Need Help?</h3>
+                <p><a href="faq.html">Visit our FAQs</a> or <a href="contact.html">Contact Support</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CoopCare. All rights reserved.</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
