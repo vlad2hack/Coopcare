@@ -1,6 +1,8 @@
 // login.js
 
-function validateLogin() {
+function validateLogin(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
     const errorMessage = document.getElementById('login-error-message');
@@ -17,10 +19,11 @@ function validateLogin() {
     }
 
     // Simulate successful login (replace with actual authentication logic)
-    alert('Login successful!');
-    window.location.href = 'dashboard.html'; // Redirect to dashboard
+    console.log('Login successful!');
+    console.log('Redirecting to dashboard...'); // Debugging log for redirection
+    window.location.href = "/dashboard.html"; // Use root-relative path
     return true; // Form is valid
 }
 
-// Optional: Add event listener to the login button if needed
-document.getElementById('login-button').addEventListener('click', validateLogin);
+// Add event listener to the form submit event
+document.getElementById('login-form').addEventListener('submit', validateLogin);
