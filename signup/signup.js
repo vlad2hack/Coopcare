@@ -1,3 +1,5 @@
+// signup.js
+
 function validateForm(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -10,6 +12,7 @@ function validateForm(event) {
 
     // Clear previous error messages
     errorMessage.textContent = '';
+    errorMessage.style.color = 'red'; // Make error message red
 
     // Validate name
     if (name.trim() === '') {
@@ -44,9 +47,12 @@ function validateForm(event) {
     // If all validations pass, send data to the server
     console.log('Form is valid. Sending data to the server...');
 
-    // Simulate an API call using fetch
-    fetch('mongodb+srv://eejegwa7:talk@coopcare.zspws.mongodb.net/?retryWrites=true&w=majority&appName=Coopcare
-', {
+    // Show a loading indicator (optional)
+    const loadingIndicator = document.getElementById('loading-indicator');
+    loadingIndicator.style.display = 'block';
+
+    // Make sure to replace with your actual backend endpoint
+    fetch('YOUR_BACKEND_URL/api/signup', { // Replace with your actual endpoint
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,15 +64,25 @@ function validateForm(event) {
             coopDao: coopDao
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
     .then(data => {
         console.log('Registration successful!', data);
-        // Redirect to dashboard
-        window.location.href = "../dashboard/dashboard.html";
+        // Optional: Provide user feedback before redirecting
+        alert('Registration successful! Redirecting to dashboard...');
+        window.location.href = "../dashboard/dashboard.html"; // Redirect to dashboard
     })
     .catch(error => {
         console.error('Error:', error);
         errorMessage.textContent = 'There was an error processing your request.';
+    })
+    .finally(() => {
+        // Hide the loading indicator after the fetch is done
+        loadingIndicator.style.display = 'none';
     });
 
     return false; // Prevent the form from submitting normally
