@@ -13,8 +13,7 @@ async function validateLogin(event) {
 
     try {
         // Send login details to backend
-        const response = await fetch('mongodb+srv://eejegwa7:talk@coopcare.zspws.mongodb.net/?retryWrites=true&w=majority&appName=Coopcare
-', {
+        const response = await fetch('https://your-api-url.com/api/login', { // Replace with your actual API endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +24,8 @@ async function validateLogin(event) {
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.message);
+            const message = data.message || 'An error occurred. Please try again.';
+            throw new Error(message);
         }
 
         // If login is successful, redirect to dashboard
