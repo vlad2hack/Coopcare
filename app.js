@@ -1,5 +1,3 @@
-// frontend/app.js
-
 const API_URL = "http://localhost:5001/api"; // Change this to your deployed URL when ready
 
 // Function to sign up a new user
@@ -10,7 +8,7 @@ async function signUpUser(event) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
-    const cooperative = document.getElementById("cooperative").value;
+    const cooperative = document.getElementById("cooperative").value; // Updated ID
 
     if (password !== confirmPassword) {
         alert("Passwords do not match!");
@@ -27,7 +25,7 @@ async function signUpUser(event) {
                 name,
                 email,
                 password,
-                cooperative,
+                cooperative, // Updated ID
             }),
         });
 
@@ -80,30 +78,19 @@ async function loginUser(event) {
 function displayUserName() {
     const token = localStorage.getItem("token");
     const userNameElement = document.getElementById("userName");
-    if (token) {
-        try {
-            const decoded = JSON.parse(atob(token.split('.')[1])); // Decode the token to get user info
-            userNameElement.innerText = `Hello, ${decoded.name}`;
-        } catch (error) {
-            console.error("Error decoding token:", error);
-            userNameElement.innerText = "Hello, User"; // Fallback if token decoding fails
+    if (userNameElement) { // Ensure the element exists
+        if (token) {
+            try {
+                const decoded = JSON.parse(atob(token.split('.')[1])); // Decode the token to get user info
+                userNameElement.innerText = `Hello, ${decoded.name}`;
+            } catch (error) {
+                console.error("Error decoding token:", error);
+                userNameElement.innerText = "Hello, User"; // Fallback if token decoding fails
+            }
+        } else {
+            userNameElement.innerText = "Hello, Guest"; // Fallback if token is not present
         }
-    } else {
-        userNameElement.innerText = "Hello, Guest"; // Fallback if token is not present
     }
-}
-
-// Placeholder functions for future implementations
-function takeLoan() {
-    // Implementation for applying for a loan
-}
-
-function validateLoan() {
-    // Implementation for validating a loan
-}
-
-function vote() {
-    // Implementation for voting
 }
 
 // Call the function to display the user's name when the dashboard loads
