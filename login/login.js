@@ -16,7 +16,7 @@ async function validateLogin(event) {
 
     try {
         // Send login details to backend
-        const response = await fetch('YOUR_BACKEND_URL/login', { // Replace with your actual backend endpoint
+        const response = await fetch('http://localhost:5001/api/login', { // Replace with your actual backend endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
