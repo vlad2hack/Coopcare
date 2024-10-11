@@ -11,7 +11,7 @@
     <section id="signup-form">
         <div class="container">
             <h2>Create Your Account</h2>
-            <form id="signup" onsubmit="return validateForm()" method="post" action="#">
+            <form id="signup" method="post">
                 <!-- Full Name -->
                 <div class="form-group">
                     <label for="name">Full Name:</label>
@@ -49,11 +49,16 @@
 
                 <!-- Submit Button -->
                 <div class="form-group">
-                    <button type="submit" class="btn">Sign Up</button>
+                    <button type="submit" class="btn" id="signup-button">Sign Up</button>
                 </div>
 
                 <!-- Error Message -->
                 <div id="error-message" class="error-message"></div>
+
+                <!-- Loading Indicator -->
+                <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                    Signing up...
+                </div>
             </form>
         </div>
     </section>
