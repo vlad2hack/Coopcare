@@ -1,10 +1,15 @@
 // signup.js
 
+function sanitizeInput(input) {
+    // Basic sanitization to prevent XSS
+    return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 function validateForm(event) {
     event.preventDefault(); // Prevent default form submission
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
+    const name = sanitizeInput(document.getElementById('name').value);
+    const email = sanitizeInput(document.getElementById('email').value);
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
     const coopDao = document.getElementById('coop-dao').value;
@@ -47,7 +52,7 @@ function validateForm(event) {
     // If all validations pass, send data to the server
     console.log('Form is valid. Sending data to the server...');
 
-    // Show a loading indicator (optional)
+    // Show a loading indicator
     const loadingIndicator = document.getElementById('loading-indicator');
     loadingIndicator.style.display = 'block';
 
@@ -72,13 +77,17 @@ function validateForm(event) {
     })
     .then(data => {
         console.log('Registration successful!', data);
-        // Optional: Provide user feedback before redirecting
+        // Store token if returned from the server
+        if (data.token) {
+            localStorage.setItem('authToken', data.token); // Store token for authenticated session
+        }
+        // Provide user feedback before redirecting
         alert('Registration successful! Redirecting to dashboard...');
         window.location.href = "../dashboard/dashboard.html"; // Redirect to dashboard
     })
     .catch(error => {
         console.error('Error:', error);
-        errorMessage.textContent = 'There was an error processing your request.';
+        errorMessage.textContent = 'There was an error processing your request. Please try again later.';
     })
     .finally(() => {
         // Hide the loading indicator after the fetch is done
