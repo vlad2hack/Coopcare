@@ -11,8 +11,8 @@ function validateForm(event) {
     const name = sanitizeInput(document.getElementById('name').value);
     const email = sanitizeInput(document.getElementById('email').value);
     const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-    const coopDao = document.getElementById('coop-dao').value;
+    const confirmPassword = document.getElementById('confirmPassword').value; // Updated ID
+    const cooperative = document.getElementById('cooperative').value; // Updated ID
     const errorMessage = document.getElementById('error-message');
 
     // Clear previous error messages
@@ -44,7 +44,7 @@ function validateForm(event) {
     }
 
     // Validate DAO selection
-    if (coopDao === '') {
+    if (cooperative === '') { // Updated ID
         errorMessage.textContent = 'Please select a Cooperative Society.';
         return false;
     }
@@ -66,7 +66,7 @@ function validateForm(event) {
             name: name,
             email: email,
             password: password,
-            coopDao: coopDao
+            cooperative: cooperative // Updated ID
         })
     })
     .then(response => {
