@@ -1,5 +1,3 @@
-// login.js
-
 async function validateLogin(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
