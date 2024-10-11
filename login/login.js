@@ -21,7 +21,7 @@ function validateLogin(event) {
     // Simulate successful login (replace with actual authentication logic)
     console.log('Login successful!');
     console.log('Redirecting to dashboard...'); // Debugging log for redirection
-    window.location.href = "../Dashboard/dashboard.html"; // Use root-relative path
+    window.location.href = "../dashboard/dashboard.html"; // Use root-relative path
     return true; // Form is valid
 }
 
