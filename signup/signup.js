@@ -1,5 +1,3 @@
-// signup.js
-
 function validateForm(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -43,15 +41,33 @@ function validateForm(event) {
         return false;
     }
 
-    // If all validations pass, simulate sending data to the server
-    console.log('Form is valid. Simulating server submission...');
-    
-    // Simulate an AJAX call to the server
-    setTimeout(() => {
-        console.log('Registration successful!');
+    // If all validations pass, send data to the server
+    console.log('Form is valid. Sending data to the server...');
+
+    // Simulate an API call using fetch
+    fetch('mongodb+srv://eejegwa7:talk@coopcare.zspws.mongodb.net/?retryWrites=true&w=majority&appName=Coopcare
+', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password,
+            coopDao: coopDao
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Registration successful!', data);
         // Redirect to dashboard
         window.location.href = "../dashboard/dashboard.html";
-    }, 1000); // Simulate a 1-second delay for the "server" to process
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        errorMessage.textContent = 'There was an error processing your request.';
+    });
 
     return false; // Prevent the form from submitting normally
 }
