@@ -1,6 +1,6 @@
 // frontend/app.js
 
-const API_URL = "http://localhost:5000/api"; // Change this to your deployed URL when ready
+const API_URL = "http://localhost:5001/api"; // Change this to your deployed URL when ready
 
 // Function to sign up a new user
 async function signUpUser(event) {
