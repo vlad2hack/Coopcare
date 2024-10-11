@@ -6,14 +6,19 @@ async function validateLogin(event) {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
     const errorMessage = document.getElementById('login-error-message');
+    const loadingIndicator = document.getElementById('loading-indicator');
 
     // Clear any previous error messages
     errorMessage.style.display = 'none';
     errorMessage.innerText = '';
+    loadingIndicator.style.display = 'none'; // Hide loading indicator initially
+
+    // Show loading indicator
+    loadingIndicator.style.display = 'block';
 
     try {
         // Send login details to backend
-        const response = await fetch('https://your-api-url.com/api/login', { // Replace with your actual API endpoint
+        const response = await fetch('YOUR_BACKEND_URL/login', { // Replace with your actual backend endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -23,9 +28,11 @@ async function validateLogin(event) {
 
         const data = await response.json();
 
+        // Hide loading indicator after response
+        loadingIndicator.style.display = 'none';
+
         if (!response.ok) {
-            const message = data.message || 'An error occurred. Please try again.';
-            throw new Error(message);
+            throw new Error(data.message || 'Login failed!');
         }
 
         // If login is successful, redirect to dashboard
@@ -33,10 +40,12 @@ async function validateLogin(event) {
         localStorage.setItem('authToken', data.token); // Store token
         window.location.href = "../dashboard/dashboard.html"; // Redirect to dashboard
     } catch (error) {
+        // Hide loading indicator if error occurs
+        loadingIndicator.style.display = 'none';
         errorMessage.style.display = 'block';
         errorMessage.innerText = error.message || 'Login failed!';
     }
 }
 
 // Add event listener to the form submit event
-document.getElementById('login-form').addEventListener('submit', validateLogin);
+document.getElementById('login').addEventListener('submit', validateLogin);
