@@ -17,25 +17,30 @@ async function signUpUser(event) {
         return;
     }
 
-    const response = await fetch(`${API_URL}/auth/signup`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name,
-            email,
-            password,
-            cooperative,
-        }),
-    });
+    try {
+        const response = await fetch(`${API_URL}/auth/signup`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password,
+                cooperative,
+            }),
+        });
 
-    const data = await response.json();
-    if (response.ok) {
-        alert("User registered successfully!");
-        window.location.href = "login.html"; // Redirect to login
-    } else {
-        alert(data.msg || "Failed to register user.");
+        const data = await response.json();
+        if (response.ok) {
+            alert("User registered successfully!");
+            window.location.href = "login.html"; // Redirect to login
+        } else {
+            alert(data.msg || "Failed to register user.");
+        }
+    } catch (error) {
+        console.error("Error during signup:", error);
+        alert("An error occurred. Please try again later.");
     }
 }
 
@@ -46,33 +51,48 @@ async function loginUser(event) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch(`${API_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email,
-            password,
-        }),
-    });
+    try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        });
 
-    const data = await response.json();
-    if (response.ok) {
-        localStorage.setItem("token", data.token); // Store token in local storage
-        window.location.href = "dashboard.html"; // Redirect to dashboard
-    } else {
-        alert(data.msg || "Failed to log in.");
+        const data = await response.json();
+        if (response.ok) {
+            localStorage.setItem("token", data.token); // Store token in local storage
+            window.location.href = "dashboard.html"; // Redirect to dashboard
+        } else {
+            alert(data.msg || "Failed to log in.");
+        }
+    } catch (error) {
+        console.error("Error during login:", error);
+        alert("An error occurred. Please try again later.");
     }
 }
-// Add these functions to app.js
 
+// Function to display the user's name
 function displayUserName() {
     const token = localStorage.getItem("token");
-    const decoded = JSON.parse(atob(token.split('.')[1])); // Decode the token to get user info
-    document.getElementById("userName").innerText = `Hello, ${decoded.name}`;
+    if (token) {
+        try {
+            const decoded = JSON.parse(atob(token.split('.')[1])); // Decode the token to get user info
+            document.getElementById("userName").innerText = `Hello, ${decoded.name}`;
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            document.getElementById("userName").innerText = "Hello, User"; // Fallback if token decoding fails
+        }
+    } else {
+        document.getElementById("userName").innerText = "Hello, Guest"; // Fallback if token is not present
+    }
 }
 
+// Placeholder functions for future implementations
 function takeLoan() {
     // Implementation for applying for a loan
 }
@@ -86,5 +106,4 @@ function vote() {
 }
 
 // Call the function to display the user's name when the dashboard loads
-displayUserName();
-
+document.addEventListener('DOMContentLoaded', displayUserName);
