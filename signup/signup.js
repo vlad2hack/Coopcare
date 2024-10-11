@@ -57,7 +57,7 @@ function validateForm(event) {
     loadingIndicator.style.display = 'block';
 
     // Make sure to replace with your actual backend endpoint
-    fetch('YOUR_BACKEND_URL/api/signup', { // Replace with your actual endpoint
+    fetch('http://localhost:5001/api/login', { // Replace with your actual endpoint
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
