@@ -1,8 +1,6 @@
 // signup.js
 
-function validateSignup(event) {
-    event.preventDefault(); // Prevent form from submitting normally
-
+function validateSignup() {
     const fullName = document.getElementById('signup-fullname').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
@@ -21,11 +19,10 @@ function validateSignup(event) {
     }
 
     // Simulate successful signup (replace with actual signup logic)
-    console.log('Signup successful!');
-    console.log('Redirecting to dashboard...'); // Debugging log for redirection
-    window.location.href = 'dashboard.html'; // Use root-relative path
+    alert('Signup successful!');
+    window.location.href = '../Dashboard/dashboard.html'; // Redirect to dashboard
     return true; // Form is valid
 }
 
-// Add event listener to the form submit event
-document.getElementById('signup-form').addEventListener('submit', validateSignup);
+// Optional: Add event listener to the signup button if needed
+document.getElementById('signup-button').addEventListener('click', validateSignup);
