@@ -50,7 +50,7 @@ function validateForm(event) {
     setTimeout(() => {
         console.log('Registration successful!');
         // Redirect to dashboard
-        window.location.href = "../Dashboard/dashboard.html";
+        window.location.href = "../dashboard/dashboard.html";
     }, 1000); // Simulate a 1-second delay for the "server" to process
 
     return false; // Prevent the form from submitting normally
