@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+    <script>
+        // Check if the user is authenticated
+        const token = localStorage.getItem('authToken');
+
+        if (!token) {
+            // No token found, redirect to login
+            window.location.href = "../login/login.html"; // Adjust path as necessary
+        }
+
+        // Optionally, you can add a function to verify the token's validity with the server here
+        // e.g., by sending a request to your API endpoint
+    </script>
+
     <!-- Header -->
     <header>
         <h1>CoopCare Dashboard</h1>
