@@ -20,7 +20,7 @@ function validateSignup() {
 
     // Simulate successful signup (replace with actual signup logic)
     alert('Signup successful!');
-    window.location.href = '../Dashboard/dashboard.html'; // Redirect to dashboard
+    window.location.href = '../dashboard/dashboard.html'; // Redirect to dashboard
     return true; // Form is valid
 }
 
