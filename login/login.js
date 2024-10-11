@@ -1,6 +1,6 @@
 // login.js
 
-function validateLogin(event) {
+async function validateLogin(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
     const email = document.getElementById('login-email').value;
@@ -11,18 +11,31 @@ function validateLogin(event) {
     errorMessage.style.display = 'none';
     errorMessage.innerText = '';
 
-    // Basic validation example (you can enhance this)
-    if (!email.includes('@') || password.length < 6) {
-        errorMessage.style.display = 'block';
-        errorMessage.innerText = 'Please enter valid credentials!';
-        return false;
-    }
+    try {
+        // Send login details to backend
+        const response = await fetch('mongodb+srv://eejegwa7:talk@coopcare.zspws.mongodb.net/?retryWrites=true&w=majority&appName=Coopcare
+', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password })
+        });
 
-    // Simulate successful login (replace with actual authentication logic)
-    console.log('Login successful!');
-    console.log('Redirecting to dashboard...'); // Debugging log for redirection
-    window.location.href = "../dashboard/dashboard.html"; // Use root-relative path
-    return true; // Form is valid
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+        // If login is successful, redirect to dashboard
+        console.log('Login successful!');
+        localStorage.setItem('authToken', data.token); // Store token
+        window.location.href = "../dashboard/dashboard.html"; // Redirect to dashboard
+    } catch (error) {
+        errorMessage.style.display = 'block';
+        errorMessage.innerText = error.message || 'Login failed!';
+    }
 }
 
 // Add event listener to the form submit event
