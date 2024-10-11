@@ -79,16 +79,17 @@ async function loginUser(event) {
 // Function to display the user's name
 function displayUserName() {
     const token = localStorage.getItem("token");
+    const userNameElement = document.getElementById("userName");
     if (token) {
         try {
             const decoded = JSON.parse(atob(token.split('.')[1])); // Decode the token to get user info
-            document.getElementById("userName").innerText = `Hello, ${decoded.name}`;
+            userNameElement.innerText = `Hello, ${decoded.name}`;
         } catch (error) {
             console.error("Error decoding token:", error);
-            document.getElementById("userName").innerText = "Hello, User"; // Fallback if token decoding fails
+            userNameElement.innerText = "Hello, User"; // Fallback if token decoding fails
         }
     } else {
-        document.getElementById("userName").innerText = "Hello, Guest"; // Fallback if token is not present
+        userNameElement.innerText = "Hello, Guest"; // Fallback if token is not present
     }
 }
 
