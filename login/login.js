@@ -1,4 +1,3 @@
-// Check if the user is already authenticated
 const token = localStorage.getItem('authToken');
 
 if (token) {
