@@ -34,6 +34,7 @@ async function validateLogin(event) {
         });
 
         const data = await response.json();
+        console.log('Login response data:', data);
 
         // Hide loading indicator after response
         loadingIndicator.style.display = 'none';
