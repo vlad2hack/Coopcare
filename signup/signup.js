@@ -83,7 +83,7 @@ function validateForm(event) {
         }
         // Provide user feedback before redirecting
         alert('Registration successful! Redirecting to dashboard...');
-        window.location.href = "../dashboard/dashboard.html"; // Redirect to dashboard
+        window.location.href = "https://coopcare.vercel.app/dashboard/dashboard.html"; // Redirect to dashboard
     })
     .catch(error => {
         console.error('Error:', error);
