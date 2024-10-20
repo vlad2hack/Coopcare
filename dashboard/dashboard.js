@@ -1,9 +1,20 @@
 async function loadUserData() {
+    // Check if the user is authenticated
+    const token = localStorage.getItem('authToken'); // Adjusted to match the token name used in your app.js
+    console.log('Token on dashboard:', token); // Debugging log
+
+    if (!token) {
+        // No token found, redirect to login
+        console.log('No token found, redirecting to login...'); // Debugging log
+        window.location.href = "../login/login.html"; // Adjust path as necessary
+        return; // Stop further execution
+    }
+
     try {
         const response = await fetch('http://localhost:5001/api/user/data', { 
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}` 
+                'Authorization': `Bearer ${token}` // Use the retrieved token
             }
         });
 
