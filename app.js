@@ -76,7 +76,7 @@ async function loginUser(event) {
 
 // Function to display the user's name
 function displayUserName() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("authToken");
     const userNameElement = document.getElementById("userName");
     if (userNameElement) { // Ensure the element exists
         if (token) {
