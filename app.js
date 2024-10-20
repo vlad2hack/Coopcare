@@ -63,7 +63,7 @@ async function loginUser(event) {
 
         const data = await response.json();
         if (response.ok) {
-            localStorage.setItem("token", data.token); // Store token in local storage
+            localStorage.setItem("authToken", data.token); // Store token in local storage
             window.location.href = "dashboard.html"; // Redirect to dashboard
         } else {
             alert(data.msg || "Failed to log in.");
