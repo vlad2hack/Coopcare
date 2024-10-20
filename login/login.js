@@ -1,3 +1,12 @@
+// Check if the user is already authenticated
+const token = localStorage.getItem('authToken');
+
+if (token) {
+    // Token exists, redirect to dashboard
+    console.log('Token found, redirecting to dashboard...');
+    window.location.href = "../dashboard/dashboard.html"; // Adjust path as necessary
+}
+
 async function validateLogin(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
