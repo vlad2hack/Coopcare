@@ -1,9 +1,9 @@
 async function loadUserData() {
     try {
-        const response = await fetch('http://localhost:5000/api/user/data', { // Update this to your actual API endpoint
+        const response = await fetch('http://localhost:5001/api/user/data', { 
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}` // Include token if required
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}` 
             }
         });
 
