@@ -23,7 +23,7 @@ async function validateLogin(event) {
     loadingIndicator.style.display = 'block';
 
     try {
-        // Send login details to backend
+        console.log('Sending login request with:', { email, password });
         const response = await fetch('http://localhost:5001/api/auth/login', {
             method: 'POST',
             headers: {
