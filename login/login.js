@@ -9,8 +9,8 @@ if (token) {
 async function validateLogin(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('login-error-message');
     const loadingIndicator = document.getElementById('loading-indicator');
 
