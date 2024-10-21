@@ -1,5 +1,4 @@
-const API_URL = "http://localhost:5001/api"; // Change this to your deployed URL when ready
-
+const API_URL = "http://localhost:5001/api"; 
 // Function to sign up a new user
 async function signUpUser(event) {
     event.preventDefault();
@@ -32,7 +31,7 @@ async function signUpUser(event) {
         const data = await response.json();
         if (response.ok) {
             alert("User registered successfully!");
-            window.location.href = "login.html"; // Redirect to login
+            window.location.href = "../login/login.html"; // Redirect to login
         } else {
             alert(data.msg || "Failed to register user.");
         }
