@@ -58,7 +58,7 @@ header {
     padding: 1rem 0;
 }
 
-header h1 {
+header h1 a {
     font-size: 1.8rem;
     background: var(--gradient-1);
     -webkit-background-clip: text;
