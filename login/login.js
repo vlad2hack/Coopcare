@@ -47,11 +47,27 @@ async function validateLogin(event) {
         localStorage.setItem('authToken', data.token); // Store token
         window.location.href = "../dashboard/dashboard.html"; // Redirect to dashboard
     } catch (error) {
-        // Hide loading indicator if error occurs
-        loadingIndicator.style.display = 'none';
-        errorMessage.style.display = 'block';
+    loadingIndicator.style.display = 'none';
+    errorMessage.style.display = 'block';
+    
+    // Enhanced error logging
+    console.error('Login error details:', {
+        error: error,
+        status: error.status,
+        message: error.message
+    });
+
+    // More specific error messages
+    if (!response) {
+        errorMessage.innerText = 'Unable to connect to server. Please check if server is running.';
+    } else if (response.status === 400) {
+        errorMessage.innerText = 'Invalid email or password format';
+    } else if (response.status === 500) {
+        errorMessage.innerText = 'Server error. Please try again later.';
+    } else {
         errorMessage.innerText = error.message || 'Login failed!';
     }
+}
 }
 
 // Add event listener to the form submit event
