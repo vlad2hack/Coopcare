@@ -59,6 +59,21 @@ body::before {
     padding: 2rem 0;
 }
 
+header {
+    background: rgba(11, 11, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+header h1 a {
+    font-size: 1.8rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+
 #signup-form .container {
     max-width: 450px;
     background: rgba(255, 255, 255, 0.03);
