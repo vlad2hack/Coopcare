@@ -50,15 +50,6 @@ body::before {
     padding: 0 1rem;
 }
 
-/* Sign Up Form Section */
-#signup-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 80px);
-    padding: 2rem 0;
-}
-
 header {
     background: rgba(11, 11, 15, 0.95);
     backdrop-filter: blur(10px);
@@ -73,6 +64,17 @@ header h1 a {
     background-clip: text;
     color: transparent;
     font-weight: 700;
+
+
+/* Sign Up Form Section */
+#signup-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 0;
+}
+
 
 #signup-form .container {
     max-width: 450px;
